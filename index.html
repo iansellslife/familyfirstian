@@ -1,222 +1,539 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Life Insurance for Veterans | Ian Egele</title>
-<meta name="description" content="Veteran-focused life insurance guidance from Ian Egele, a licensed life insurance agent in all 50 states.">
-<link rel="stylesheet" href="/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Insurance Options for Veterans | Ian Egele</title>
+  <meta name="description" content="Veterans and families can request a no-obligation life insurance consultation with Ian Egele, a licensed independent life insurance broker." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="Life Insurance Options for Veterans" />
+  <meta property="og:description" content="Request a personalized life insurance consultation with Ian Egele." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --navy:#0b1f33;
+      --navy2:#102d4a;
+      --blue:#2e6fa3;
+      --blue2:#4d8fc0;
+      --bg:#f5f7fa;
+      --card:#ffffff;
+      --text:#15202b;
+      --muted:#617083;
+      --line:#dce4ec;
+      --success:#1f7a4d;
+      --danger:#a33a3a;
+      --shadow:0 20px 55px rgba(11,31,51,.12);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(77,143,192,.10), transparent 30%),
+        linear-gradient(180deg,#fff 0%,var(--bg) 100%);
+    }
+    a{color:inherit}
+    .wrap{width:min(1120px,92%);margin:auto}
+    .topbar{
+      background:var(--navy);
+      color:#fff;
+      font-size:.9rem;
+      text-align:center;
+      padding:10px 16px;
+    }
+    header{
+      padding:20px 0;
+      border-bottom:1px solid rgba(11,31,51,.07);
+      background:rgba(255,255,255,.9);
+      backdrop-filter:blur(10px);
+      position:sticky;top:0;z-index:20;
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand strong{display:block;font-size:1rem;letter-spacing:.01em}
+    .brand span{display:block;font-size:.84rem;color:var(--muted);margin-top:2px}
+    .nav-cta{
+      text-decoration:none;
+      background:var(--navy);
+      color:#fff;
+      padding:11px 16px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:.9rem;
+    }
+    .hero{
+      padding:70px 0 40px;
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+      gap:52px;
+      align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--blue);
+      background:#edf5fb;
+      border:1px solid #d6e7f4;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:.85rem;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    h1{
+      font-size:clamp(2.4rem,5vw,4.7rem);
+      line-height:.99;
+      letter-spacing:-.05em;
+      margin:20px 0 20px;
+      color:var(--navy);
+    }
+    .sub{
+      font-size:1.18rem;
+      line-height:1.65;
+      color:var(--muted);
+      max-width:650px;
+      margin-bottom:26px;
+    }
+    .trust{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:26px;
+    }
+    .trust div{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:15px;
+      font-size:.9rem;
+      box-shadow:0 8px 24px rgba(11,31,51,.05);
+    }
+    .trust b{display:block;color:var(--navy);margin-bottom:4px}
+    .form-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:26px;
+      min-height:540px;
+    }
+    .progress-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .progress-label{font-size:.84rem;color:var(--muted);font-weight:700}
+    .progress-track{height:8px;background:#eaf0f5;border-radius:999px;overflow:hidden}
+    .progress-bar{height:100%;width:14%;background:linear-gradient(90deg,var(--navy2),var(--blue2));transition:.3s ease}
+    .step{display:none;animation:fade .25s ease}
+    .step.active{display:block}
+    @keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+    .step h2{font-size:1.55rem;margin:18px 0 8px;color:var(--navy);letter-spacing:-.025em}
+    .step p{color:var(--muted);line-height:1.55;margin:0 0 22px}
+    .choices{display:grid;gap:11px}
+    .choice{
+      width:100%;
+      text-align:left;
+      border:1.5px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      padding:16px;
+      border-radius:14px;
+      cursor:pointer;
+      font:inherit;
+      font-weight:700;
+      transition:.15s ease;
+    }
+    .choice:hover{border-color:var(--blue2);background:#f7fbff;transform:translateY(-1px)}
+    .choice.selected{border-color:var(--navy);background:#eef5fa}
+    label{font-size:.86rem;font-weight:800;color:var(--navy);display:block;margin:14px 0 7px}
+    input,select{
+      width:100%;
+      border:1.5px solid var(--line);
+      border-radius:13px;
+      padding:14px 15px;
+      font:inherit;
+      outline:none;
+      background:#fff;
+    }
+    input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(46,111,163,.08)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{display:flex;gap:10px;margin-top:22px}
+    .btn{
+      border:none;
+      cursor:pointer;
+      border-radius:13px;
+      padding:14px 18px;
+      font:inherit;
+      font-weight:800;
+    }
+    .primary{background:var(--navy);color:#fff;flex:1}
+    .secondary{background:#edf2f6;color:var(--navy)}
+    .consent{
+      font-size:.75rem!important;
+      line-height:1.55!important;
+      color:#6e7a89!important;
+      margin-top:16px!important;
+    }
+    .consent a{color:var(--navy)}
+    .error{color:var(--danger);font-size:.82rem;margin-top:8px;display:none}
+    .section{padding:74px 0}
+    .section h3{font-size:clamp(1.8rem,3vw,2.8rem);color:var(--navy);letter-spacing:-.04em;margin:0 0 14px}
+    .section-intro{color:var(--muted);max-width:700px;line-height:1.65;margin-bottom:28px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .info-card{
+      background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;
+      box-shadow:0 10px 30px rgba(11,31,51,.05)
+    }
+    .info-card .num{font-size:.8rem;color:var(--blue);font-weight:900;letter-spacing:.08em}
+    .info-card h4{margin:10px 0 8px;font-size:1.1rem;color:var(--navy)}
+    .info-card p{color:var(--muted);line-height:1.55;margin:0}
+    .disclaimer{
+      background:#eef3f7;border:1px solid #dce5ed;border-radius:18px;padding:22px;
+      color:#586778;line-height:1.6;font-size:.86rem
+    }
+    footer{padding:34px 0 44px;color:#718092;font-size:.82rem}
+    .footer-row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .thankyou{text-align:center;padding:40px 12px}
+    .check{
+      width:64px;height:64px;border-radius:50%;background:#eaf6ef;color:var(--success);
+      display:grid;place-items:center;margin:0 auto 18px;font-size:2rem;font-weight:900;
+    }
+    .small-note{font-size:.8rem;color:var(--muted);margin-top:16px}
+    @media(max-width:850px){
+      header{position:static}
+      .hero{grid-template-columns:1fr;padding-top:44px;gap:30px}
+      .trust,.cards{grid-template-columns:1fr}
+      .form-card{min-height:auto}
+    }
+    @media(max-width:560px){
+      .nav-cta{display:none}
+      .grid2{grid-template-columns:1fr}
+      h1{font-size:2.75rem}
+      .form-card{padding:20px}
+      .hero{width:94%}
+    }
+  </style>
 </head>
 <body>
-<div class="topbar">Veteran-focused life insurance guidance • No-obligation consultation</div>
-<header>
-  <div class="container header-inner">
-    <div class="brand">
-      <div class="brand-main">Family First Veterans Department</div>
-      <div class="brand-sub">Ian Egele</div>
-    </div>
-    <div class="header-contact">
-      <div class="eyeline">Speak directly with Ian — not a call center</div>
-      <a href="mailto:iansellslife@gmail.com">iansellslife@gmail.com</a>
-    </div>
-  </div>
-</header>
+  <div class="topbar">Independent life insurance guidance for veterans and families</div>
 
-<main>
-<section class="hero">
-  <div class="hero-left">
-    <div class="kicker">Life Insurance Options</div>
-    <h1>Protect what matters most.<br><em>For your family.</em></h1>
-    <p class="lead">As a licensed life insurance agent, I help veterans and their families understand coverage options that may fit their needs, health, and budget.</p>
-    <div class="benefits">
-      <div class="benefit"><div class="icon">✓</div><div><b>Veteran focused</b><span>One-on-one guidance for veterans and their families.</span></div></div>
-      <div class="benefit"><div class="icon">1:1</div><div><b>Personal service</b><span>You’ll work directly with me from consultation through application.</span></div></div>
-      <div class="benefit"><div class="icon">30+</div><div><b>Access to leading carriers</b><span>I work with 30+ insurance carriers to compare available options and rates.</span></div></div>
-      <div class="benefit"><div class="icon">$</div><div><b>Discount review</b><span>Where available, I review applicable veteran and state-specific discounts to help identify competitive rates.</span></div></div>
-    </div>
-  </div>
-
-  <div class="hero-right" id="quote">
-    <div class="form-shell">
-      <h2>Get Your Personalized Life Insurance Options</h2>
-      <p class="intro">Answer a few quick questions to request a no-obligation consultation with Ian Egele, Licensed Life Insurance Agent.</p>
-
-      <form name="veteran-life-insurance-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="leadForm">
-        <input type="hidden" name="form-name" value="veteran-life-insurance-lead">
-        <p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
-        <input type="hidden" name="utm_source" id="utm_source"><input type="hidden" name="utm_medium" id="utm_medium">
-        <input type="hidden" name="utm_campaign" id="utm_campaign"><input type="hidden" name="utm_content" id="utm_content">
-        <input type="hidden" name="utm_term" id="utm_term"><input type="hidden" name="gclid" id="gclid">
-        <input type="hidden" name="fbclid" id="fbclid"><input type="hidden" name="landing_page" id="landing_page">
-
-        <div id="formFlow">
-          <div class="progress-meta"><span id="progressText">Step 1 of 7</span><span>Secure Request</span></div>
-          <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
-
-          <div class="step active" data-step="1">
-            <h3>Are you a U.S. veteran?</h3>
-            <div class="choices" data-name="veteran_status">
-              <button class="choice" type="button" data-value="Yes">Yes, I am a veteran</button>
-              <button class="choice" type="button" data-value="No">No</button>
-            </div>
-            <input type="hidden" name="veteran_status">
-          </div>
-
-          <div class="step" data-step="2">
-            <h3>What is your date of birth?</h3>
-            <label for="date_of_birth">Date of birth</label>
-            <input id="date_of_birth" name="date_of_birth" type="date" autocomplete="bday" required>
-            <div id="dobError" style="display:none;color:#a12626;font-size:.82rem;margin-top:7px">Please enter a valid date of birth for an adult age 18 or older.</div>
-            <div class="actions"><button type="button" class="btn btn-secondary back">Back</button><button type="button" class="btn btn-primary next">Continue</button></div>
-          </div>
-
-          <div class="step" data-step="3">
-            <h3>What are you mainly looking to protect?</h3>
-            <div class="choices" data-name="coverage_goal">
-              <button class="choice" type="button" data-value="Final expenses">Final expenses</button>
-              <button class="choice" type="button" data-value="Family">Family</button>
-              <button class="choice" type="button" data-value="Mortgage">Mortgage</button>
-              <button class="choice" type="button" data-value="Income replacement">Income replacement</button>
-              <button class="choice" type="button" data-value="Leave a legacy">Leave a legacy</button>
-              <button class="choice" type="button" data-value="Not sure">Not sure</button>
-            </div>
-            <input type="hidden" name="coverage_goal">
-            <div class="actions"><button type="button" class="btn btn-secondary back">Back</button></div>
-          </div>
-
-          <div class="step" data-step="4">
-            <h3>How much coverage are you considering?</h3>
-            <div class="choices" data-name="coverage_amount">
-              <button class="choice" type="button" data-value="$5,000–$10,000">$5,000–$10,000</button>
-              <button class="choice" type="button" data-value="$10,000–$25,000">$10,000–$25,000</button>
-              <button class="choice" type="button" data-value="$25,000–$50,000">$25,000–$50,000</button>
-              <button class="choice" type="button" data-value="$50,000–$100,000">$50,000–$100,000</button>
-              <button class="choice" type="button" data-value="$100,000+">$100,000+</button>
-              <button class="choice" type="button" data-value="Not sure">Not sure</button>
-            </div>
-            <input type="hidden" name="coverage_amount">
-            <div class="actions"><button type="button" class="btn btn-secondary back">Back</button></div>
-          </div>
-
-          <div class="step" data-step="5">
-            <h3>How would you describe your overall health?</h3>
-            <div class="choices" data-name="health">
-              <button class="choice" type="button" data-value="Excellent">Excellent</button>
-              <button class="choice" type="button" data-value="Good">Good</button>
-              <button class="choice" type="button" data-value="Fair">Fair</button>
-              <button class="choice" type="button" data-value="Some health concerns">Some health concerns</button>
-            </div>
-            <input type="hidden" name="health">
-            <div class="actions"><button type="button" class="btn btn-secondary back">Back</button></div>
-          </div>
-
-          <div class="step" data-step="6">
-            <h3>Do you currently have life insurance?</h3>
-            <div class="choices" data-name="current_insurance">
-              <button class="choice" type="button" data-value="Yes">Yes</button>
-              <button class="choice" type="button" data-value="No">No</button>
-              <button class="choice" type="button" data-value="Not sure">Not sure</button>
-            </div>
-            <input type="hidden" name="current_insurance">
-            <div class="actions"><button type="button" class="btn btn-secondary back">Back</button></div>
-          </div>
-
-          <div class="step" data-step="7">
-            <h3>Where should Ian contact you?</h3>
-            <div class="grid2">
-              <div><label for="first_name">First name</label><input id="first_name" name="first_name" autocomplete="given-name" required></div>
-              <div><label for="last_name">Last name</label><input id="last_name" name="last_name" autocomplete="family-name" required></div>
-            </div>
-            <label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required>
-            <label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required>
-            <label for="state">State</label>
-            <select id="state" name="state" required>
-              <option value="">Select your state</option>
-              <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option><option>District of Columbia</option>
-            </select>
-            <p class="consent">By clicking “Request a Call From Ian,” you agree that Ian Egele and the insurance agencies or carriers involved in servicing your request may contact you at the phone number and email address provided regarding life insurance products and your request, including by call or text message. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out of texts.</p>
-            <div class="actions"><button type="button" class="btn btn-secondary back">Back</button><button type="submit" class="btn btn-primary">Request a Call From Ian</button></div>
-            <div class="security-note"><span>🔒</span><span><b>Your information is private.</b> It is used to respond to your insurance request and is not displayed publicly.</span></div>
-          </div>
-        </div>
-
-        <div class="thankyou" id="thankYou">
-          <div class="check">✓</div>
-          <h3>Your request has been received.</h3>
-          <p>Ian Egele will follow up using the contact information you provided to discuss your life insurance needs and available options.</p>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<section class="profile-section">
-  <div class="container profile-grid">
-    <div class="profile-card">
-      <img src="/assets/ian-egele-headshot.jpg" alt="Ian Egele, Licensed Life Insurance Agent">
-      <div>
-        <h2>Ian Egele</h2>
-        <div class="license-title">Licensed Life Insurance Agent</div>
-        <ul class="checks">
-          <li>Licensed in all 50 U.S. states</li>
-          <li>Veteran-focused life insurance guidance</li>
-          <li>Access to 30+ leading insurance carriers</li>
-        </ul>
-        <p>I help veterans and their families compare available life insurance options so they can make an informed decision based on their goals, health, and budget.</p>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <strong>Family First Veterans Department</strong>
+        <span>Ian Egele • Life Insurance Broker</span>
       </div>
+      <a class="nav-cta" href="#quote">Request Coverage Options</a>
     </div>
+  </header>
 
-    <div class="why">
-      <h3>Why work with me?</h3>
-      <div class="why-item"><div class="why-icon">30+</div><div><b>Access to leading carriers</b><span>I work with 30+ insurance carriers, allowing me to compare multiple options rather than relying on a single company.</span></div></div>
-      <div class="why-item"><div class="why-icon">$</div><div><b>Veteran & state discount review</b><span>Where available, I review applicable veteran and state-specific discounts to help identify competitive rates.</span></div></div>
-      <div class="why-item"><div class="why-icon">✓</div><div><b>Coverage built around your needs</b><span>We’ll look at your goals, budget, health, and desired coverage amount.</span></div></div>
-      <div class="why-item"><div class="why-icon">1:1</div><div><b>Direct, personal service</b><span>You’ll speak directly with Ian—not a call center—from consultation through application.</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="trust-section">
-  <div class="container">
-    <div class="trust-title">Your trust is important</div>
-    <div class="trust-grid">
-      <div class="trust-item"><b>Your information is private</b><span>Information submitted through this site is used to respond to your life insurance request.</span></div>
-      <div class="trust-item"><b>Licensed professional</b><span>Ian Egele is a licensed life insurance agent in all 50 U.S. states.</span></div>
-      <div class="trust-item"><b>No obligation</b><span>Requesting information does not obligate you to purchase a policy.</span></div>
-      <div class="trust-item"><b>Independent comparison</b><span>Multiple carrier options can be reviewed based on eligibility and availability.</span></div>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container">
-    <div class="footer-grid">
+  <main>
+    <section class="wrap hero">
       <div>
-        <div class="brand-main" style="color:#fff;font-family:Georgia,serif;font-size:1.3rem;font-weight:700">Family First Veterans Department</div>
-        <p>Veteran-focused life insurance guidance from Ian Egele, Licensed Life Insurance Agent.</p>
-      </div>
-      <div>
-        <h4>Important Links</h4>
-        <div class="footer-links">
-          <a href="/privacy.html">Privacy Policy</a>
-          <a href="/terms.html">Terms of Service</a>
-          <a href="/licensing.html">Licensing & Disclosures</a>
+        <span class="eyebrow">Veteran-focused life insurance</span>
+        <h1>Protect what you served for.</h1>
+        <p class="sub">
+          Request a personalized life insurance consultation and explore coverage options based on your age, health, goals, and budget.
+        </p>
+
+        <div class="trust">
+          <div><b>Coverage from $5,000</b><span>Options for final expense, family protection, and more.</span></div>
+          <div><b>Personal guidance</b><span>Speak directly with Ian about your needs and eligibility.</span></div>
+          <div><b>No obligation</b><span>Review available options before deciding whether to apply.</span></div>
         </div>
       </div>
-      <div>
-        <h4>Contact Ian</h4>
-        <div class="footer-links">
-          <a href="mailto:iansellslife@gmail.com">iansellslife@gmail.com</a>
-          <span style="color:#d5dee8;font-size:.88rem">Licensed in all 50 states</span>
+
+      <div id="quote" class="form-card">
+        <form name="veteran-life-insurance-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="leadForm">
+          <input type="hidden" name="form-name" value="veteran-life-insurance-lead" />
+          <p style="display:none"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+
+          <!-- Attribution -->
+          <input type="hidden" name="utm_source" id="utm_source" />
+          <input type="hidden" name="utm_medium" id="utm_medium" />
+          <input type="hidden" name="utm_campaign" id="utm_campaign" />
+          <input type="hidden" name="utm_content" id="utm_content" />
+          <input type="hidden" name="utm_term" id="utm_term" />
+          <input type="hidden" name="gclid" id="gclid" />
+          <input type="hidden" name="fbclid" id="fbclid" />
+          <input type="hidden" name="landing_page" id="landing_page" />
+
+          <div id="formFlow">
+            <div class="progress-row">
+              <div class="progress-label" id="progressLabel">Step 1 of 7</div>
+              <div style="width:58%">
+                <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+              </div>
+            </div>
+
+            <div class="step active" data-step="1">
+              <h2>Are you a U.S. veteran?</h2>
+              <p>This helps us understand who we’re assisting.</p>
+              <div class="choices" data-name="veteran_status">
+                <button type="button" class="choice" data-value="Yes">Yes</button>
+                <button type="button" class="choice" data-value="No">No</button>
+              </div>
+              <input type="hidden" name="veteran_status" />
+            </div>
+
+            <div class="step" data-step="2">
+              <h2>What is your age?</h2>
+              <p>Enter your age so we can better understand potential coverage options.</p>
+              <label for="age">Age</label>
+              <input id="age" name="age" type="number" min="18" max="100" inputmode="numeric" placeholder="Example: 67" required />
+              <div class="error" id="ageError">Please enter an age between 18 and 100.</div>
+              <div class="actions">
+                <button type="button" class="btn secondary back">Back</button>
+                <button type="button" class="btn primary next">Continue</button>
+              </div>
+            </div>
+
+            <div class="step" data-step="3">
+              <h2>What are you mainly looking to protect?</h2>
+              <p>Select the option that best matches your goal.</p>
+              <div class="choices" data-name="coverage_goal">
+                <button type="button" class="choice" data-value="Final expenses">Final expenses</button>
+                <button type="button" class="choice" data-value="Family">Family</button>
+                <button type="button" class="choice" data-value="Mortgage">Mortgage</button>
+                <button type="button" class="choice" data-value="Income replacement">Income replacement</button>
+                <button type="button" class="choice" data-value="Leave a legacy">Leave a legacy</button>
+                <button type="button" class="choice" data-value="Not sure">Not sure</button>
+              </div>
+              <input type="hidden" name="coverage_goal" />
+              <div class="actions"><button type="button" class="btn secondary back">Back</button></div>
+            </div>
+
+            <div class="step" data-step="4">
+              <h2>How much coverage are you considering?</h2>
+              <p>You can adjust this later during your consultation.</p>
+              <div class="choices" data-name="coverage_amount">
+                <button type="button" class="choice" data-value="$5,000–$10,000">$5,000–$10,000</button>
+                <button type="button" class="choice" data-value="$10,000–$25,000">$10,000–$25,000</button>
+                <button type="button" class="choice" data-value="$25,000–$50,000">$25,000–$50,000</button>
+                <button type="button" class="choice" data-value="$50,000–$100,000">$50,000–$100,000</button>
+                <button type="button" class="choice" data-value="$100,000+">$100,000+</button>
+                <button type="button" class="choice" data-value="Not sure">Not sure</button>
+              </div>
+              <input type="hidden" name="coverage_amount" />
+              <div class="actions"><button type="button" class="btn secondary back">Back</button></div>
+            </div>
+
+            <div class="step" data-step="5">
+              <h2>How would you describe your overall health?</h2>
+              <p>No detailed medical information is needed on this page.</p>
+              <div class="choices" data-name="health">
+                <button type="button" class="choice" data-value="Excellent">Excellent</button>
+                <button type="button" class="choice" data-value="Good">Good</button>
+                <button type="button" class="choice" data-value="Fair">Fair</button>
+                <button type="button" class="choice" data-value="Some health concerns">Some health concerns</button>
+              </div>
+              <input type="hidden" name="health" />
+              <div class="actions"><button type="button" class="btn secondary back">Back</button></div>
+            </div>
+
+            <div class="step" data-step="6">
+              <h2>Do you currently have life insurance?</h2>
+              <p>This helps us understand whether you're adding coverage or starting fresh.</p>
+              <div class="choices" data-name="current_insurance">
+                <button type="button" class="choice" data-value="Yes">Yes</button>
+                <button type="button" class="choice" data-value="No">No</button>
+                <button type="button" class="choice" data-value="Not sure">Not sure</button>
+              </div>
+              <input type="hidden" name="current_insurance" />
+              <div class="actions"><button type="button" class="btn secondary back">Back</button></div>
+            </div>
+
+            <div class="step" data-step="7">
+              <h2>Where should we send your request?</h2>
+              <p>Ian will use this information to follow up about your requested life insurance consultation.</p>
+
+              <div class="grid2">
+                <div>
+                  <label for="first_name">First name</label>
+                  <input id="first_name" name="first_name" autocomplete="given-name" required />
+                </div>
+                <div>
+                  <label for="last_name">Last name</label>
+                  <input id="last_name" name="last_name" autocomplete="family-name" required />
+                </div>
+              </div>
+
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" required />
+
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+
+              <label for="state">State</label>
+              <select id="state" name="state" required>
+                <option value="">Select your state</option>
+                <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+                <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+                <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+                <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+                <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+                <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+                <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+                <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+                <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+                <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+                <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+                <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+                <option>Wisconsin</option><option>Wyoming</option><option>District of Columbia</option>
+              </select>
+
+              <p class="consent">
+                By clicking “Request My Options,” you agree that Ian Egele and the life insurance agencies or carriers involved in servicing your request may contact you at the phone number and email you provided regarding life insurance products and your request, including by call or text message. Consent is not a condition of purchase. Message and data rates may apply. You may opt out of texts by replying STOP.
+              </p>
+
+              <div class="actions">
+                <button type="button" class="btn secondary back">Back</button>
+                <button type="submit" class="btn primary">Request My Options</button>
+              </div>
+              <p class="small-note">Questions? Email <a href="mailto:iansellslife@gmail.com">iansellslife@gmail.com</a></p>
+            </div>
+          </div>
+
+          <div id="thankYou" class="thankyou" style="display:none">
+            <div class="check">✓</div>
+            <h2>Your request has been received.</h2>
+            <p>Thank you. Ian Egele will follow up using the contact information you provided to discuss your life insurance needs and available options.</p>
+            <p class="small-note">Please keep your phone nearby so you don't miss the consultation call.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h3>What happens after you submit?</h3>
+        <p class="section-intro">The goal is to make the process simple and personal from the first conversation through the application.</p>
+        <div class="cards">
+          <div class="info-card">
+            <div class="num">01</div>
+            <h4>Quick consultation</h4>
+            <p>Discuss your goals, budget, current coverage, and the people you want to protect.</p>
+          </div>
+          <div class="info-card">
+            <div class="num">02</div>
+            <h4>Review eligibility</h4>
+            <p>Talk through health and underwriting considerations that may affect available policy options.</p>
+          </div>
+          <div class="info-card">
+            <div class="num">03</div>
+            <h4>Compare coverage</h4>
+            <p>Review available options and decide whether you want to move forward with an application.</p>
+          </div>
         </div>
       </div>
+    </section>
+
+    <section class="wrap" style="padding-bottom:54px">
+      <div class="disclaimer">
+        <strong>Important:</strong> This website is for insurance solicitation and educational purposes. It is not affiliated with, endorsed by, or connected to the U.S. Department of Veterans Affairs, the U.S. government, or any government agency. Coverage, pricing, eligibility, and availability vary by applicant, carrier, product, and state. No coverage is in force unless and until an application is approved and a policy is issued by an insurance company.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>© <span id="year"></span> Family First Veterans Department — Ian Egele</div>
+      <div><a href="mailto:iansellslife@gmail.com">iansellslife@gmail.com</a></div>
     </div>
-    <div class="footer-bottom">
-      This website is an insurance solicitation and is not affiliated with, endorsed by, or connected to the U.S. Department of Veterans Affairs, the U.S. government, or any government agency. Coverage, pricing, discounts, eligibility, and carrier availability vary by applicant, carrier, product, and state. No coverage is in force until an application is approved and a policy is issued by an insurance company.
-    </div>
-  </div>
-</footer>
-<script src="/script.js"></script>
+  </footer>
+
+  <script>
+    const steps = [...document.querySelectorAll('.step')];
+    const progressBar = document.getElementById('progressBar');
+    const progressLabel = document.getElementById('progressLabel');
+    let current = 1;
+
+    function showStep(n){
+      current = n;
+      steps.forEach(s => s.classList.toggle('active', Number(s.dataset.step) === n));
+      progressLabel.textContent = `Step ${n} of 7`;
+      progressBar.style.width = `${(n/7)*100}%`;
+      document.getElementById('quote').scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    document.querySelectorAll('.choices').forEach(group => {
+      group.querySelectorAll('.choice').forEach(btn => {
+        btn.addEventListener('click', () => {
+          group.querySelectorAll('.choice').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          const field = document.querySelector(`input[name="${group.dataset.name}"]`);
+          field.value = btn.dataset.value;
+          if(current < 7) setTimeout(() => showStep(current + 1), 120);
+        });
+      });
+    });
+
+    document.querySelectorAll('.back').forEach(btn => {
+      btn.addEventListener('click', () => showStep(Math.max(1,current-1)));
+    });
+
+    document.querySelectorAll('.next').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if(current === 2){
+          const age = Number(document.getElementById('age').value);
+          const err = document.getElementById('ageError');
+          if(!age || age < 18 || age > 100){
+            err.style.display='block'; return;
+          }
+          err.style.display='none';
+        }
+        showStep(Math.min(7,current+1));
+      });
+    });
+
+    // Capture common ad attribution parameters
+    const params = new URLSearchParams(window.location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'].forEach(k => {
+      const el = document.getElementById(k);
+      if(el) el.value = params.get(k) || '';
+    });
+    document.getElementById('landing_page').value = window.location.href;
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Netlify AJAX submit, then show confirmation without leaving page
+    const form = document.getElementById('leadForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+
+      const submit = form.querySelector('button[type="submit"]');
+      submit.disabled = true;
+      submit.textContent = 'Submitting...';
+
+      const data = new FormData(form);
+      const body = new URLSearchParams();
+      for (const [key, value] of data.entries()) body.append(key, value);
+
+      try{
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: {'Content-Type':'application/x-www-form-urlencoded'},
+          body: body.toString()
+        });
+        if(!res.ok) throw new Error('Submission failed');
+        document.getElementById('formFlow').style.display='none';
+        document.getElementById('thankYou').style.display='block';
+
+        // Optional analytics hook:
+        // window.dataLayer = window.dataLayer || [];
+        // window.dataLayer.push({event:'lead_submit'});
+        // if (window.fbq) fbq('track', 'Lead');
+      }catch(err){
+        submit.disabled = false;
+        submit.textContent = 'Request My Options';
+        alert('We could not submit your request. Please email iansellslife@gmail.com.');
+      }
+    });
+  </script>
 </body>
 </html>
