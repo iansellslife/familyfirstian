@@ -29,17 +29,47 @@ document.querySelectorAll('.back').forEach(btn => btn.addEventListener('click',(
 document.querySelectorAll('.next').forEach(btn => {
   btn.addEventListener('click', () => {
     if(current === 2){
-      const dobInput = document.getElementById('date_of_birth');
-      const err = document.getElementById('dobError');
-      const dob = new Date(dobInput.value + 'T00:00:00');
-      const today = new Date();
-      const adult = new Date(today.getFullYear()-18,today.getMonth(),today.getDate());
-      const oldest = new Date(today.getFullYear()-110,today.getMonth(),today.getDate());
-      if(!dobInput.value || isNaN(dob.getTime()) || dob > adult || dob < oldest){
-        err.style.display='block'; return;
-      }
-      err.style.display='none';
-    }
+  const month = document.getElementById('dob_month').value;
+  const day = document.getElementById('dob_day').value;
+  const year = document.getElementById('dob_year').value;
+  const dobInput = document.getElementById('date_of_birth');
+  const err = document.getElementById('dobError');
+
+  if(!month || !day || !year){
+    err.textContent = 'Please select your complete date of birth.';
+    err.style.display = 'block';
+    return;
+  }
+
+  const dob = new Date(Number(year), Number(month) - 1, Number(day));
+  const today = new Date();
+
+  const adult = new Date(
+    today.getFullYear() - 18,
+    today.getMonth(),
+    today.getDate()
+  );
+
+  const oldest = new Date(
+    today.getFullYear() - 110,
+    today.getMonth(),
+    today.getDate()
+  );
+
+  const validDate =
+    dob.getFullYear() === Number(year) &&
+    dob.getMonth() === Number(month) - 1 &&
+    dob.getDate() === Number(day);
+
+  if(!validDate || dob > adult || dob < oldest){
+    err.textContent = 'Please select a valid date of birth for an adult age 18 or older.';
+    err.style.display = 'block';
+    return;
+  }
+
+  dobInput.value = `${year}-${month}-${String(day).padStart(2,'0')}`;
+  err.style.display = 'none';
+}
     showStep(Math.min(7,current+1));
   });
 });
