@@ -99,11 +99,23 @@ if(form){
         body:body.toString()
       });
       if(!res.ok) throw new Error();
-      document.getElementById('formFlow').style.display='none';
-      document.getElementById('thankYou').style.display='block';
-      window.dataLayer=window.dataLayer||[];
-      window.dataLayer.push({event:'lead_submit'});
-      if(window.fbq) fbq('track','Lead');
+     document.getElementById('formFlow').style.display='none';
+document.getElementById('thankYou').style.display='block';
+
+// Google Ads lead conversion
+if (typeof gtag === 'function') {
+  gtag('event', 'conversion', {
+    'send_to': 'AW-18388637123/cLq9COmu9OEcEMOrscBE',
+    'value': 1.0,
+    'currency': 'USD'
+  });
+}
+
+// Existing tracking
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'lead_submit'});
+
+if(window.fbq) fbq('track','Lead');
     }catch(err){
       submit.disabled=false;submit.textContent='Request a Call From Ian';
       alert('We could not submit your request. Please email iansellslife@gmail.com.');
